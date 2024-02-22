@@ -1,15 +1,9 @@
-FROM golang:1.22-alpine
-
+FROM golang:alpine as compiler
 WORKDIR /app
+COPY . .
+RUN go build -o /main app.go
 
-COPY go.mod /app
-
-RUN go mod download
-
-COPY *.go /app
-
-RUN go build app.go
-
-EXPOSE 5000
-
-CMD go run app.go
+FROM scratch
+COPY --from=compiler /main /main
+EXPOSE 8080
+ENTRYPOINT ["/main"]
