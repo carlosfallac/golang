@@ -19,3 +19,6 @@ Divirta-se!
 # Executar o container
 
 `docker run carlosfallac/fullcycle`
+
+# Links
+- Link da imagem no Docker Hub: https://hub.docker.com/r/carlosfallac/fullcycle
